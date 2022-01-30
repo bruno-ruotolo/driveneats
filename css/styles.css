@@ -257,13 +257,14 @@ footer {
 .confirmar-pedido_botao-de-confirmar {
     background-color: #FFFFFF;
     display: flex;
-    width: 329px;
+    width: 100%px;
     height: 52px;
     border-radius: 100px;
+    margin: 0 auto;
 }
 
 .confirmar-pedido_botao-de-confirmar p {
-    margin: auto;
+    margin: auto 40px;
     font-size: 22px;
     color: #50D074;
     font-weight: 700;
@@ -274,4 +275,10 @@ footer {
     color: #FFFFFF;
     font-weight: 700;
     margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    margin: auto;
+
 }

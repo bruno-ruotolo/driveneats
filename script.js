@@ -23,6 +23,7 @@ function mudarFooter() {
 // COLOCAR BORDA VERDE NO SELECIONADO E TIRAR DOS DEMAIS
 
 // COMIDAS
+let nomeComidaSelecionada = null;
 let precoComida = 0;
 function selecionarOpcaoComidas(comidas) {
     const testeSelecionados = document.querySelector(".article_selecionar-comida");
@@ -51,10 +52,13 @@ function selecionarOpcaoComidas(comidas) {
 
     precoComida = document.querySelector(".article_selecionar-comida .main_barrra_itens_preco-com-ponto").innerHTML;
     // CHAMANDO A FUNÇÃO PARA APARECER A TELA DO BONUS
+
+    nomeComidaSelecionada = document.querySelector(".article_selecionar-comida .titulo-comida").innerText;
     mudarFooter();
 }
 
 // BEBIDAS
+let nomeBebidaSelecionada = null;
 let precoBebida = 0;
 function selecionarOpcaoBebidas(bebidas) {
     const testeSelecionados = document.querySelector(".article_selecionar-bebida");
@@ -83,10 +87,13 @@ function selecionarOpcaoBebidas(bebidas) {
     document.querySelector(".confirmar-pedidos-bebida").innerHTML = "<p>" + textoBebidaSelecionada + "</p>" + "<p>" + textoPrecoBebidaSelecionada + "</p>";
 
     precoBebida = document.querySelector(".article_selecionar-bebida .main_barrra_itens_preco-com-ponto").innerHTML;
+
+    nomeBebidaSelecionada = document.querySelector(".article_selecionar-bebida .titulo-bebida").innerText;
     mudarFooter();
 }
 
 // SOBREMESAS
+let nomeSobremesaSelecionada = null;
 let precoSobremesa = 0;
 function selecionarOpcaoSobremesas(sobremesas) {
     const testeSelecionados = document.querySelector(".article_selecionar-sobremesa");
@@ -119,6 +126,8 @@ function selecionarOpcaoSobremesas(sobremesas) {
 
     precoSobremesa = document.querySelector(".article_selecionar-sobremesa .main_barra_itens_preco-com-ponto ").innerHTML;
 
+    nomeSobremesaSelecionada = document.querySelector(".article_selecionar-sobremesa .titulo-sobremesa").innerText;
+
     mudarFooter();
 }
 
@@ -140,11 +149,30 @@ function botaoCancelar() {
 }
 
 // SOMA DO TOTAL
-
+let total = null;
 function somaTotal() {
-    let somaTotal = 5;
-    somaTotal = parseFloat(precoSobremesa) + parseFloat(precoBebida) + parseFloat(precoComida);
-    somaTotalTexto = somaTotal.toFixed(2).toString().replace(".", ",");
-    document.querySelector(".confirmar-pedido_total").innerHTML = "<p> Total </p>" + "<p> R$ " + somaTotalTexto + "</p>";
 
+    total = parseFloat(precoSobremesa) + parseFloat(precoBebida) + parseFloat(precoComida);
+    somaTotalTexto = total.toFixed(2).toString().replace(".", ",");
+    document.querySelector(".confirmar-pedido_total").innerHTML = "<p> Total </p>" + "<p> R$ " + somaTotalTexto + "</p>";
+}
+
+// WHATSAPP
+
+let nomeCliente = null;
+let enderecoCliente = null;
+let textoEncodado = null;
+function nomeEnderecoCliente() {
+    nomeCliente = prompt("Qual o seu nome?");
+    enderecoCliente = prompt("Qual o seu endereço?");
+
+    textoEncodado = encodeURIComponent("Olá, gostaria de fazer o pedido: " + "\n" +
+        "- Prato: " + nomeComidaSelecionada + "\n" +
+        "- Bebida: " + nomeBebidaSelecionada + "\n" +
+        "- Sobremesa: " + nomeSobremesaSelecionada + "\n" +
+        "Total: R$ " + (total.toFixed(2).replace(".", ",")) + "\n" + "\n" +
+        "Nome: " + nomeCliente + "\n" +
+        "Endereço: " + enderecoCliente);
+
+    window.open("https://wa.me/5544999564773?text=" + textoEncodado);
 }
