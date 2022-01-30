@@ -86,7 +86,7 @@ article{
     background-color: #FFFFFF;
 }
 
-.article_selecionar {
+.article_selecionar-comida, .article_selecionar-bebida, .article_selecionar-sobremesa {
     border: 5px solid #32B72F;
 }
 
@@ -148,7 +148,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 364px;
+    width: 100%;
     height: 61px;
     margin: 0 auto;
     border-radius: 50px;
@@ -250,7 +250,9 @@ footer {
     display: none;
 }
 
-
+.shown-icone-comidas, .shown-icone-bebidas, .shown-icone-sobremesas  {
+    display: block;
+}
 
 .confirmar-pedido_botao-de-confirmar {
     background-color: #FFFFFF;
