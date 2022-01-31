@@ -184,7 +184,7 @@ footer {
     padding: 0 75px;
     text-align: center;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 700;
     color: #FFFFFF;
     z-index: 1;
 }
@@ -198,7 +198,7 @@ footer {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
     z-index: 3;
 }
 
