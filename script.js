@@ -20,12 +20,14 @@ function mudarFooter() {
     }
 }
 
-// COLOCAR BORDA VERDE NO SELECIONADO E TIRAR DOS DEMAIS
+
 
 // COMIDAS
 let nomeComidaSelecionada = null;
 let precoComida = 0;
 function selecionarOpcaoComidas(comidas) {
+
+    // COLOCAR BORDA VERDE NO SELECIONADO E TIRAR DOS DEMAIS
     const testeSelecionados = document.querySelector(".article_selecionar-comida");
     if (testeSelecionados !== null) {
         testeSelecionados.classList.remove("article_selecionar-comida");
@@ -41,19 +43,19 @@ function selecionarOpcaoComidas(comidas) {
 
     contadorFoods = 1;
 
-    // JS PARA A TELA DO BONUS
+    // JS PARA A TELA DO BONUS E WHATSAPP
     const comidaSelecionada = document.querySelector(".article_selecionar-comida .titulo-comida");
     const textoComidaSelecionada = comidaSelecionada.innerHTML;
-
-    const comidaSelecionadaPreco = document.querySelector(".article_selecionar-comida .preco-comida");
-    textoPrecoComidaSelecionada = comidaSelecionadaPreco.innerHTML;
+    const comidaSelecionadaPreco = document.querySelector(".article_selecionar-comida .main_barrra_itens_preco-com-ponto");
+    const textoPrecoComidaSelecionada = comidaSelecionadaPreco.innerHTML.replace(".", ",");
 
     document.querySelector(".confirmar-pedidos-comida").innerHTML = "<p>" + textoComidaSelecionada + "</p>" + "<p>" + textoPrecoComidaSelecionada + "</p>";
 
     precoComida = document.querySelector(".article_selecionar-comida .main_barrra_itens_preco-com-ponto").innerHTML;
-    // CHAMANDO A FUNÇÃO PARA APARECER A TELA DO BONUS
 
     nomeComidaSelecionada = document.querySelector(".article_selecionar-comida .titulo-comida").innerText;
+
+    // CHAMANDO A FUNÇÃO PARA APARECER A TELA DO BONUS
     mudarFooter();
 }
 
@@ -61,6 +63,7 @@ function selecionarOpcaoComidas(comidas) {
 let nomeBebidaSelecionada = null;
 let precoBebida = 0;
 function selecionarOpcaoBebidas(bebidas) {
+    // COLOCAR BORDA VERDE NO SELECIONADO E TIRAR DOS DEMAIS
     const testeSelecionados = document.querySelector(".article_selecionar-bebida");
     if (testeSelecionados !== null) {
         testeSelecionados.classList.remove("article_selecionar-bebida");
@@ -77,18 +80,19 @@ function selecionarOpcaoBebidas(bebidas) {
 
     contadorDrinks = 1;
 
-    // JS PARA A TELA DO BONUS
+    // JS PARA A TELA DO BONUS E WHATSAPP
     const bebidaSelecionada = document.querySelector(".article_selecionar-bebida .titulo-bebida");
     const textoBebidaSelecionada = bebidaSelecionada.innerHTML;
-
-    const bebidaSelecionadaPreco = document.querySelector(".article_selecionar-bebida .preco-bebida");
-    const textoPrecoBebidaSelecionada = bebidaSelecionadaPreco.innerHTML;
+    const bebidaSelecionadaPreco = document.querySelector(".article_selecionar-bebida .main_barrra_itens_preco-com-ponto");
+    const textoPrecoBebidaSelecionada = bebidaSelecionadaPreco.innerHTML.replace(".", ",");
 
     document.querySelector(".confirmar-pedidos-bebida").innerHTML = "<p>" + textoBebidaSelecionada + "</p>" + "<p>" + textoPrecoBebidaSelecionada + "</p>";
 
     precoBebida = document.querySelector(".article_selecionar-bebida .main_barrra_itens_preco-com-ponto").innerHTML;
 
     nomeBebidaSelecionada = document.querySelector(".article_selecionar-bebida .titulo-bebida").innerText;
+
+    // CHAMANDO A FUNÇÃO PARA APARECER A TELA DO BONUS
     mudarFooter();
 }
 
@@ -96,6 +100,7 @@ function selecionarOpcaoBebidas(bebidas) {
 let nomeSobremesaSelecionada = null;
 let precoSobremesa = 0;
 function selecionarOpcaoSobremesas(sobremesas) {
+    // COLOCAR BORDA VERDE NO SELECIONADO E TIRAR DOS DEMAIS
     const testeSelecionados = document.querySelector(".article_selecionar-sobremesa");
     if (testeSelecionados !== null) {
         testeSelecionados.classList.remove("article_selecionar-sobremesa");
@@ -115,12 +120,11 @@ function selecionarOpcaoSobremesas(sobremesas) {
     contadorDeserts = 1;
 
 
-    // JS PARA A TELA DO BONUS
+    // JS PARA A TELA DO BONUS E WHATSAPP
     const sobremesaSelecionada = document.querySelector(".article_selecionar-sobremesa .titulo-sobremesa");
     const textoSobremesaSelecionada = sobremesaSelecionada.innerHTML;
-
-    const sobremesaSelecionadaPreco = document.querySelector(".article_selecionar-sobremesa .preco-sobremesa");
-    textoPrecoSobremesaSelecionada = sobremesaSelecionadaPreco.innerHTML;
+    const sobremesaSelecionadaPreco = document.querySelector(".article_selecionar-sobremesa .main_barra_itens_preco-com-ponto");
+    const textoPrecoSobremesaSelecionada = sobremesaSelecionadaPreco.innerHTML.replace(".", ",");
 
     document.querySelector(".confirmar-pedidos-sobremesa").innerHTML = "<p>" + textoSobremesaSelecionada + "</p>" + "<p>" + textoPrecoSobremesaSelecionada + "</p>";
 
@@ -128,9 +132,19 @@ function selecionarOpcaoSobremesas(sobremesas) {
 
     nomeSobremesaSelecionada = document.querySelector(".article_selecionar-sobremesa .titulo-sobremesa").innerText;
 
+    // CHAMANDO A FUNÇÃO PARA APARECER A TELA DO BONUS
     mudarFooter();
 }
 
+
+// SOMA DO TOTAL
+let total = null;
+function somaTotal() {
+
+    total = parseFloat(precoSobremesa) + parseFloat(precoBebida) + parseFloat(precoComida);
+    somaTotalTexto = total.toFixed(2).toString().replace(".", ",");
+    document.querySelector(".confirmar-pedido_total").innerHTML = "<p> TOTAL </p>" + "<p> R$ " + somaTotalTexto + "</p>";
+}
 
 // TELA DE CONFIRMAÇÃO DO PEDIDO
 function telaConfirmarPedido() {
@@ -141,24 +155,13 @@ function telaConfirmarPedido() {
     somaTotal();
 }
 
-
 // BOTÃO DE CANCELAR O PEDIDO
 function botaoCancelar() {
     let esconderConfirmacao = document.querySelector(".confirmar-pedido");
     esconderConfirmacao.classList.add("hidden");
 }
 
-// SOMA DO TOTAL
-let total = null;
-function somaTotal() {
-
-    total = parseFloat(precoSobremesa) + parseFloat(precoBebida) + parseFloat(precoComida);
-    somaTotalTexto = total.toFixed(2).toString().replace(".", ",");
-    document.querySelector(".confirmar-pedido_total").innerHTML = "<p> Total </p>" + "<p> R$ " + somaTotalTexto + "</p>";
-}
-
 // WHATSAPP
-
 let nomeCliente = null;
 let enderecoCliente = null;
 let textoEncodado = null;
@@ -174,5 +177,5 @@ function nomeEnderecoCliente() {
         "Nome: " + nomeCliente + "\n" +
         "Endereço: " + enderecoCliente);
 
-    window.open("https://wa.me/5544999564773?text=" + textoEncodado);
+    window.open("https://wa.me/5544999999999?text=" + textoEncodado);
 }
