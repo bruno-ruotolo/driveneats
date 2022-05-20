@@ -2,6 +2,7 @@
 A mobile delivery application. where you can order your food online.
 
 <img src="/assets/driveneats.gif" />
+<img src="/assets/driveneats.png" />
 
 Try it out at https://bruno-ruotolo.github.io/driveneats/
 
