@@ -1,5 +1,5 @@
 # driveneats
-A delivery application. where you can order your food online.
+A mobile delivery application. where you can order your food online.
 
 <img src="/assets/driveneats.gif" />
 
